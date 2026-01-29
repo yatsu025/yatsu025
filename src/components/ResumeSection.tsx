@@ -55,7 +55,7 @@ const ResumeSection = () => {
             <div className="grid sm:grid-cols-2 gap-6 mb-8">
               {/* View PDF */}
               <a
-                href="#"
+                href="/resume/yash_srivastava_resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-card-hover p-6 flex flex-col items-center gap-4 group"

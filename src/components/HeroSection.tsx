@@ -136,7 +136,7 @@ const HeroSection = () => {
               className="flex gap-4 justify-center lg:justify-start"
             >
               <a
-                href="https://github.com"
+                href="https://github.com/yatsu025"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-xl glass-card-hover icon-glow text-muted-foreground hover:text-primary"
@@ -144,7 +144,7 @@ const HeroSection = () => {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/yash-srivastava-514252322/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-xl glass-card-hover icon-glow text-muted-foreground hover:text-primary"
@@ -152,7 +152,7 @@ const HeroSection = () => {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="mailto:yash@example.com"
+                href="mailto:yashsrivastava1808@gmail.com"
                 className="p-3 rounded-xl glass-card-hover icon-glow text-muted-foreground hover:text-primary"
               >
                 <Mail className="w-5 h-5" />

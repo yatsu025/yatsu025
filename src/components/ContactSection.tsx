@@ -124,11 +124,11 @@ const ContactSection = () => {
                 <div className="space-y-3 text-muted-foreground">
                   <p className="flex items-center gap-2">
                     <Mail className="w-4 h-4 text-primary" />
-                    yash.srivastava@example.com
+                    yashsrivastava1808@gmail.com
                   </p>
                   <p className="flex items-center gap-2">
                     <Phone className="w-4 h-4 text-secondary" />
-                    +91 98765 43210
+                    +91 95549 24590
                   </p>
                 </div>
               </div>
