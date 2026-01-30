@@ -225,50 +225,189 @@
     mask-composite: exclude;
   }
 
-  /* Smooth reveal animation */
-  @keyframes reveal-up {
-    0% {
-      opacity: 0;
-      transform: translateY(30px);
+  /* 3D perspective utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  /* Mobile responsive text scaling */
+  @media (max-width: 640px) {
+    .section-heading {
+      @apply text-2xl md:text-3xl lg:text-4xl;
     }
-    100% {
+    
+    .section-subheading {
+      @apply text-base md:text-lg;
+    }
+    
+    .section-container {
+      @apply px-3 sm:px-4 py-16 md:py-20;
+    }
+    
+    .glass-card {
+      @apply p-3 sm:p-4 md:p-6;
+    }
+    
+    .btn-primary, .btn-outline, .btn-secondary {
+      @apply px-4 py-2 text-sm;
+    }
+
+    /* Mobile hero adjustments */
+    .hero-photo {
+      @apply w-56 h-56 sm:w-64 sm:h-64;
+    }
+
+    /* Mobile project cards */
+    .project-card {
+      @apply p-4 sm:p-5 md:p-6;
+    }
+
+    /* Mobile certificate cards */
+    .cert-card {
+      @apply w-[220px] sm:w-[240px] md:w-[260px];
+    }
+  }
+
+  /* Coming Soon Animation */
+  @keyframes coming-soon-glow {
+    0%, 100% { 
+      text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+    }
+    50% { 
+      text-shadow: 0 0 20px hsl(var(--primary) / 0.8), 0 0 30px hsl(var(--secondary) / 0.5);
+    }
+  }
+
+  .animate-coming-soon {
+    animation: coming-soon-glow 2s ease-in-out infinite;
+  }
+
+  /* Enhanced 3D card animations */
+  @keyframes rotate-360 {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+
+  .animate-rotate-360 {
+    animation: rotate-360 3s ease-in-out;
+  }
+
+  /* Smooth 3D transforms */
+  .smooth-3d {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
+  /* Smooth layout animations for skills section */
+  .skills-card {
+    transition: height 0.3s ease-in-out;
+  }
+
+  .skills-expandable {
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Dynamic card sizing */
+  .dynamic-card {
+    min-height: fit-content;
+    height: auto;
+  }
+
+  /* Cursor following 3D card */
+  .cursor-follow-card {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+  }
+
+  .cursor-follow-card:hover {
+    transform-style: preserve-3d;
+  }
+
+  /* Shine effect for 3D cards */
+  .card-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .cursor-follow-card:hover .card-shine {
+    opacity: 1;
+  }
+
+  /* Loading dots animation */
+  @keyframes loading-pulse {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(0.8);
+    }
+    50% {
       opacity: 1;
-      transform: translateY(0);
+      transform: scale(1.2);
     }
   }
 
-  @keyframes reveal-left {
-    0% {
-      opacity: 0;
-      transform: translateX(-30px);
+  .animate-loading-pulse {
+    animation: loading-pulse 1.5s ease-in-out infinite;
+  }
+
+  /* Enhanced coming soon glow */
+  @keyframes coming-soon-enhanced {
+    0%, 100% { 
+      text-shadow: 
+        0 0 10px hsl(var(--primary) / 0.5),
+        0 0 20px hsl(var(--primary) / 0.3);
+      transform: scale(1);
     }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
+    50% { 
+      text-shadow: 
+        0 0 20px hsl(var(--primary) / 0.8), 
+        0 0 30px hsl(var(--secondary) / 0.6),
+        0 0 40px hsl(var(--primary) / 0.4);
+      transform: scale(1.05);
     }
   }
 
-  @keyframes reveal-right {
-    0% {
-      opacity: 0;
-      transform: translateX(30px);
+  .animate-coming-soon-enhanced {
+    animation: coming-soon-enhanced 2.5s ease-in-out infinite;
+  }
+
+  /* Smooth scroll for mobile */
+  @media (max-width: 768px) {
+    html {
+      scroll-padding-top: 80px;
     }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
+    
+    /* Reduce motion for better mobile performance */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-rotate-360,
+      .animate-loading-pulse,
+      .animate-coming-soon-enhanced,
+      .cursor-follow-card {
+        animation: none;
+        transform: none !important;
+      }
     }
-  }
-
-  .animate-reveal-up {
-    animation: reveal-up 0.8s ease-out forwards;
-  }
-
-  .animate-reveal-left {
-    animation: reveal-left 0.8s ease-out forwards;
-  }
-
-  .animate-reveal-right {
-    animation: reveal-right 0.8s ease-out forwards;
   }
 }
 

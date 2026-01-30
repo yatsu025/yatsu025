@@ -127,10 +127,10 @@ const SkillsSection = () => {
             </h2>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-6">
+          <div className="grid lg:grid-cols-3 gap-6 items-start">
             {/* Full Stack Development Card */}
             <motion.div variants={itemVariants} className="lg:col-span-2">
-              <div className="glass-card p-6 h-full border border-border/50">
+              <div className="glass-card p-6 border border-border/50">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 rounded-xl bg-primary/10 border border-primary/20">
                     <Code2 className="w-6 h-6 text-primary" />
@@ -145,41 +145,45 @@ const SkillsSection = () => {
                   {fullStackCategories.map((category, catIndex) => (
                     <motion.div
                       key={category.title}
-                      className="bg-muted/30 border border-border/30 rounded-xl p-4 cursor-pointer hover:bg-muted/50 transition-colors"
+                      className="bg-muted/30 border border-border/30 rounded-xl overflow-hidden cursor-pointer hover:bg-muted/50 transition-colors"
                       whileHover={{ scale: 1.005 }}
                       onClick={() => toggleCategory(category.title)}
+                      layout
+                      transition={{ layout: { duration: 0.3, ease: "easeInOut" } }}
                     >
                       {/* Category Header */}
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3 flex-1">
-                          <div className="p-2 rounded-lg bg-muted text-muted-foreground">
-                            {category.icon}
-                          </div>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-3">
-                              <h4 className="font-semibold text-foreground">{category.title}</h4>
-                              <span className="text-sm font-medium text-primary">
-                                {category.overallLevel}%
-                              </span>
+                      <div className="p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3 flex-1">
+                            <div className="p-2 rounded-lg bg-muted text-muted-foreground">
+                              {category.icon}
                             </div>
-                            {/* Overall Progress Bar */}
-                            <div className="h-1.5 bg-muted rounded-full overflow-hidden mt-2 w-full max-w-[200px]">
-                              <motion.div
-                                className="h-full rounded-full bg-primary/60"
-                                initial={{ width: 0 }}
-                                animate={isInView ? { width: `${category.overallLevel}%` } : { width: 0 }}
-                                transition={{ duration: 1, delay: 0.3 + catIndex * 0.2, ease: "easeOut" }}
-                              />
+                            <div className="flex-1">
+                              <div className="flex items-center gap-3">
+                                <h4 className="font-semibold text-foreground">{category.title}</h4>
+                                <span className="text-sm font-medium text-primary">
+                                  {category.overallLevel}%
+                                </span>
+                              </div>
+                              {/* Overall Progress Bar */}
+                              <div className="h-1.5 bg-muted rounded-full overflow-hidden mt-2 w-full max-w-[200px]">
+                                <motion.div
+                                  className="h-full rounded-full bg-primary/60"
+                                  initial={{ width: 0 }}
+                                  animate={isInView ? { width: `${category.overallLevel}%` } : { width: 0 }}
+                                  transition={{ duration: 1, delay: 0.3 + catIndex * 0.2, ease: "easeOut" }}
+                                />
+                              </div>
                             </div>
                           </div>
+                          <motion.div
+                            animate={{ rotate: expandedCategory === category.title ? 180 : 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="text-muted-foreground"
+                          >
+                            <ChevronDown className="w-5 h-5" />
+                          </motion.div>
                         </div>
-                        <motion.div
-                          animate={{ rotate: expandedCategory === category.title ? 180 : 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="text-muted-foreground"
-                        >
-                          <ChevronDown className="w-5 h-5" />
-                        </motion.div>
                       </div>
 
                       {/* Expanded Details */}
@@ -189,18 +193,20 @@ const SkillsSection = () => {
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
                             className="overflow-hidden"
                           >
-                            <div className="pt-4 mt-4 border-t border-border/50">
-                              <p className="text-sm text-muted-foreground mb-4">Detailed Skill Breakdown:</p>
-                              {category.skills.map((skill, index) => (
-                                <SkillBar 
-                                  key={skill.name} 
-                                  skill={skill} 
-                                  delay={0.1 * index}
-                                />
-                              ))}
+                            <div className="px-4 pb-4 border-t border-border/50">
+                              <div className="pt-4">
+                                <p className="text-sm text-muted-foreground mb-4">Detailed Skill Breakdown:</p>
+                                {category.skills.map((skill, index) => (
+                                  <SkillBar 
+                                    key={skill.name} 
+                                    skill={skill} 
+                                    delay={0.1 * index}
+                                  />
+                                ))}
+                              </div>
                             </div>
                           </motion.div>
                         )}
@@ -212,7 +218,7 @@ const SkillsSection = () => {
             </motion.div>
 
             {/* Right Column - Tools & Vibe Coding */}
-            <div className="space-y-6">
+            <div className="space-y-6 flex flex-col">
               {/* Tools Card */}
               <motion.div variants={itemVariants} className="glass-card p-6 border border-border/50">
                 <div className="flex items-center gap-3 mb-6">

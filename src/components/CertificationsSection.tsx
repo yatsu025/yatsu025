@@ -87,28 +87,28 @@ const CertificationsSection = () => {
               whileHover={{ y: -4 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setSelectedCert(cert)}
-              className="flex-shrink-0 w-[260px] bg-muted/30 border border-border/50 rounded-xl p-4 cursor-pointer group hover:border-primary/30 transition-all duration-300"
+              className="flex-shrink-0 w-[240px] sm:w-[260px] bg-muted/30 border border-border/50 rounded-xl p-3 sm:p-4 cursor-pointer group hover:border-primary/30 transition-all duration-300"
               style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
             >
-              <div className="aspect-video bg-muted rounded-lg mb-3 overflow-hidden">
+              <div className="aspect-video bg-muted rounded-lg mb-2 sm:mb-3 overflow-hidden">
                  <img src={cert.image} alt={cert.name} className="w-full h-full object-cover" />
               </div>
-              <div className="flex items-start gap-3">
-                <div className={`p-2.5 rounded-lg transition-colors ${
+              <div className="flex items-start gap-2 sm:gap-3">
+                <div className={`p-2 sm:p-2.5 rounded-lg transition-colors ${
                   cert.type === 'hackathon' 
                     ? 'bg-secondary/10 text-secondary group-hover:bg-secondary/20' 
                     : 'bg-primary/10 text-primary group-hover:bg-primary/20'
                 }`}>
-                  {cert.type === 'hackathon' ? <Trophy className="w-4 h-4" /> : <Award className="w-4 h-4" />}
+                  {cert.type === 'hackathon' ? <Trophy className="w-3 h-3 sm:w-4 sm:h-4" /> : <Award className="w-3 h-3 sm:w-4 sm:h-4" />}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h4 className="font-medium text-foreground text-sm line-clamp-2 group-hover:text-primary transition-colors">
+                  <h4 className="font-medium text-foreground text-xs sm:text-sm line-clamp-2 group-hover:text-primary transition-colors">
                     {cert.name}
                   </h4>
                   <p className="text-xs text-muted-foreground mt-1">{cert.issuer}</p>
                 </div>
               </div>
-              <div className="mt-3 flex items-center gap-1 text-xs text-muted-foreground group-hover:text-primary transition-colors">
+              <div className="mt-2 sm:mt-3 flex items-center gap-1 text-xs text-muted-foreground group-hover:text-primary transition-colors">
                 <span>View</span>
                 <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
               </div>
@@ -168,14 +168,14 @@ const CertificationsSection = () => {
       <div className="section-container relative z-10" ref={ref}>
         <motion.div variants={containerVariants} initial="hidden" animate={isInView ? "visible" : "hidden"}>
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
+          <motion.div variants={itemVariants} className="text-center mb-8 sm:mb-12">
+            <span className="inline-block px-3 sm:px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs sm:text-sm font-medium mb-4">
               Achievements & Credentials
             </span>
-            <h2 className="section-heading">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               My <span className="gradient-text">Certifications</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto mt-4 text-sm">
+            <p className="text-muted-foreground max-w-2xl mx-auto mt-4 text-sm sm:text-base">
               Click on any certificate to view details or use "More Details" to see all
             </p>
           </motion.div>

@@ -78,19 +78,19 @@ const ContactSection = () => {
           animate={isInView ? "visible" : "hidden"}
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-sm font-medium mb-4">
+          <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16">
+            <span className="inline-block px-3 sm:px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs sm:text-sm font-medium mb-4">
               Get In Touch
             </span>
-            <h2 className="section-heading">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Let's <span className="gradient-text-warm">Connect</span>
             </h2>
-            <p className="section-subheading mx-auto mt-4">
+            <p className="text-muted-foreground max-w-2xl mx-auto mt-4 text-base sm:text-lg md:text-xl">
               Have a project in mind or want to collaborate? I'd love to hear from you!
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="grid gap-8 sm:gap-12 lg:grid-cols-2 max-w-6xl mx-auto">
             {/* Left - Social Links */}
             <motion.div variants={itemVariants} className="space-y-8">
               <div>
