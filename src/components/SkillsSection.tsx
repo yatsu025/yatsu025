@@ -74,16 +74,14 @@ const SkillsSection = () => {
   ];
 
   const tools = [
-    "Git", "GitHub", "VS Code", "Figma", "Postman", 
-    "Chrome DevTools", "npm/yarn", "Vercel", "Netlify"
+    "Git", "GitHub", "VS Code", "Figma", 
+    "Chrome DevTools", "npm", "Vercel", "Netlify"
   ];
 
   const vibeCodeSkills = [
-    { name: "Prompt Engineering", level: 85 },
-    { name: "AI-Assisted Coding", level: 90 },
-    { name: "ChatGPT/Claude", level: 88 },
-    { name: "GitHub Copilot", level: 75 },
-    { name: "Lovable/v0.dev", level: 80 },
+    { name: "Prompt Engineering", level: 50 },
+    { name: "AI-Assisted Coding", level: 55 },
+    { name: "vibe coding", level: 75 },
   ];
 
   const toggleCategory = (title: string) => {
