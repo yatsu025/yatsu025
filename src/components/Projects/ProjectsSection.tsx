@@ -239,8 +239,8 @@ const ProjectsSection = () => {
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 0.1 }}
                                 href={project.githubUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                target="github"
+                                rel="https://github.com/yatsu025/jivan-ai.git"
                                 className="p-3 rounded-full bg-white/10 hover:bg-primary/20 border border-white/20 hover:border-primary/50 text-white transition-all group/icon shadow-lg"
                                 title="GitHub Repository"
                               >
