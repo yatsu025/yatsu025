@@ -1,41 +1,14 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Award, Trophy, ExternalLink, X, ChevronRight, ArrowRight } from 'lucide-react';
-
-interface Certificate {
-  id: number;
-  name: string;
-  issuer: string;
-  type: 'hackathon' | 'certification';
-  image: string;
-  description?: string;
-}
+import { useNavigate } from 'react-router-dom';
+import { Award, Trophy, ExternalLink, X, ChevronRight, ArrowRight, Search, Info } from 'lucide-react';
+import { hackathons, skillCertifications as certifications, Certification } from '@/data/certificationsData';
 
 const CertificationsSection = () => {
   const ref = useRef(null);
+  const navigate = useNavigate();
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [showAllModal, setShowAllModal] = useState<'hackathon' | 'certification' | null>(null);
-  const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
-
-  const hackathons: Certificate[] = [
-    { id: 1, name: "Ace Hack 4.0", issuer: "Ace Hack", type: 'hackathon', image: "/certificate/Ace hack 4.0.jpg.jpeg", description: "Participated in Ace Hack 4.0." },
-    { id: 2, name: "Code Verse", issuer: "Code Verse", type: 'hackathon', image: "/certificate/Code verse.jpg.jpeg", description: "Participated in Code Verse." },
-    { id: 3, name: "Coding Challenge of United", issuer: "United", type: 'hackathon', image: "/certificate/Coding challenge of United.png", description: "Coding challenge participation." },
-    { id: 4, name: "Hack with Uttar Pradesh", issuer: "Uttar Pradesh", type: 'hackathon', image: "/certificate/Hack with Utterpredesh.png", description: "Hackathon organized by UP." },
-    { id: 5, name: "Hackshatra", issuer: "Hackshatra", type: 'hackathon', image: "/certificate/Hackshatra.jpg.jpeg", description: "Hackshatra event." },
-    { id: 6, name: "Kode Kalesh", issuer: "Kode Kalesh", type: 'hackathon', image: "/certificate/Kode Kalesh.png", description: "Kode Kalesh event." },
-    { id: 7, name: "Namespace", issuer: "Namespace", type: 'hackathon', image: "/certificate/Namespace.jpg.jpeg", description: "Namespace event." },
-    { id: 8, name: "Hackerground", issuer: "Hackerground", type: 'hackathon', image: "/certificate/hackerground.jpg", description: "Hackerground event." },
-    { id: 9, name: "BNB Chain", issuer: "BNB Chain", type: 'hackathon', image: "/certificate/BNB chan.jpg.jpeg", description: "BNB Chain event." },
-    { id: 10, name: "Vibe", issuer: "Vibe", type: 'hackathon', image: "/certificate/Vibe.jpg", description: "Vibe event." },
-  ];
-
-  const certifications: Certificate[] = [
-    { id: 11, name: "AWS Cloud Practitioner", issuer: "Amazon Web Services", type: 'certification', image: "/certificate/AWS.png", description: "AWS Cloud Practitioner certification." },
-    { id: 12, name: "Accenture Developer Program", issuer: "Accenture", type: 'certification', image: "/certificate/Accenture.png", description: "Accenture Developer Program." },
-    { id: 13, name: "TATA Digital Skills", issuer: "TATA", type: 'certification', image: "/certificate/TATA.png", description: "TATA Digital Skills certification." },
-    { id: 14, name: "FreeCodeCamp", issuer: "FreeCodeCamp", type: 'certification', image: "/certificate/Free code camp.png", description: "FreeCodeCamp certification." },
-  ];
+  const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -48,7 +21,7 @@ const CertificationsSection = () => {
   };
 
   // Smooth infinite scroll component
-  const InfiniteScroll = ({ items, direction = 'left' }: { items: Certificate[]; direction?: 'left' | 'right' }) => {
+  const InfiniteScroll = ({ items, direction = 'left' }: { items: Certification[]; direction?: 'left' | 'right' }) => {
     const [isPaused, setIsPaused] = useState(false);
     const duplicatedItems = [...items, ...items, ...items, ...items];
     const cardWidth = 260;
@@ -86,7 +59,13 @@ const CertificationsSection = () => {
               key={`${cert.id}-${index}`}
               whileHover={{ y: -4 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => setSelectedCert(cert)}
+              onClick={() => {
+                if (cert.type === 'skill') {
+                  navigate(`/certification/${cert.id}`);
+                } else {
+                  setSelectedCert(cert);
+                }
+              }}
               className="flex-shrink-0 w-[240px] sm:w-[260px] bg-muted/30 border border-border/50 rounded-xl p-3 sm:p-4 cursor-pointer group hover:border-primary/30 transition-all duration-300"
               style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
             >
@@ -109,7 +88,7 @@ const CertificationsSection = () => {
                 </div>
               </div>
               <div className="mt-2 sm:mt-3 flex items-center gap-1 text-xs text-muted-foreground group-hover:text-primary transition-colors">
-                <span>View</span>
+                <span>{cert.type === 'skill' ? 'View Details' : 'View Certificate'}</span>
                 <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
               </div>
             </motion.div>
@@ -129,8 +108,8 @@ const CertificationsSection = () => {
   }: { 
     title: string; 
     subtitle: string; 
-    items: Certificate[]; 
-    type: 'hackathon' | 'certification'; 
+    items: Certification[]; 
+    type: 'hackathon' | 'skill'; 
     icon: typeof Trophy; 
     direction: 'left' | 'right';
   }) => (
@@ -146,7 +125,7 @@ const CertificationsSection = () => {
           </div>
         </div>
         <button
-          onClick={() => setShowAllModal(type)}
+          onClick={() => navigate('/certifications')}
           className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:scale-105 ${
             type === 'hackathon' 
               ? 'bg-secondary/10 text-secondary hover:bg-secondary/20 border border-secondary/20' 
@@ -195,7 +174,7 @@ const CertificationsSection = () => {
             title="Licenses & Certifications" 
             subtitle="Professional credentials" 
             items={certifications} 
-            type="certification" 
+            type="skill" 
             icon={Award}
             direction="right"
           />
@@ -203,90 +182,7 @@ const CertificationsSection = () => {
         </motion.div>
       </div>
 
-      {/* All Certificates Modal */}
-      <AnimatePresence>
-        {showAllModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-background/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={() => setShowAllModal(null)}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-background border border-border rounded-2xl max-w-3xl w-full max-h-[80vh] overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Modal Header */}
-              <div className="flex items-center justify-between p-5 border-b border-border">
-                <div className="flex items-center gap-3">
-                  <div className={`p-2.5 rounded-xl ${showAllModal === 'hackathon' ? 'bg-secondary/10' : 'bg-primary/10'}`}>
-                    {showAllModal === 'hackathon' ? (
-                      <Trophy className={`w-5 h-5 text-secondary`} />
-                    ) : (
-                      <Award className={`w-5 h-5 text-primary`} />
-                    )}
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold">
-                      {showAllModal === 'hackathon' ? 'All Hackathons' : 'All Certifications'}
-                    </h3>
-                    <p className="text-xs text-muted-foreground">
-                      {showAllModal === 'hackathon' ? hackathons.length : certifications.length} achievements
-                    </p>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setShowAllModal(null)}
-                  className="p-2 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              {/* Modal Content */}
-              <div className="p-5 overflow-y-auto max-h-[calc(80vh-80px)]">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {(showAllModal === 'hackathon' ? hackathons : certifications).map((cert) => (
-                    <motion.div
-                      key={cert.id}
-                      whileHover={{ scale: 1.02 }}
-                      onClick={() => {
-                        setShowAllModal(null);
-                        setSelectedCert(cert);
-                      }}
-                      className="bg-muted/30 border border-border/50 rounded-xl p-4 cursor-pointer hover:border-primary/30 transition-all"
-                    >
-                      <div className="aspect-video bg-muted rounded-lg mb-3 overflow-hidden">
-                         <img src={cert.image} alt={cert.name} className="w-full h-full object-cover" />
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <div className={`p-2.5 rounded-lg ${
-                          cert.type === 'hackathon' ? 'bg-secondary/10 text-secondary' : 'bg-primary/10 text-primary'
-                        }`}>
-                          {cert.type === 'hackathon' ? <Trophy className="w-4 h-4" /> : <Award className="w-4 h-4" />}
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-medium text-foreground">{cert.name}</h4>
-                          <p className="text-sm text-muted-foreground mt-1">{cert.issuer}</p>
-                          {cert.description && (
-                            <p className="text-xs text-muted-foreground mt-2 line-clamp-2">{cert.description}</p>
-                          )}
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Certificate Detail Modal */}
+      {/* Certificate Detail Modal (For quick view on main page) */}
       <AnimatePresence>
         {selectedCert && (
           <motion.div
@@ -300,45 +196,56 @@ const CertificationsSection = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-background border border-border rounded-2xl max-w-lg w-full p-6"
+              className="bg-card border border-border rounded-3xl overflow-hidden max-w-4xl w-full max-h-[90vh] shadow-2xl flex flex-col md:flex-row"
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={() => setSelectedCert(null)}
-                className="absolute top-4 right-4 p-2 rounded-lg bg-muted hover:bg-muted/80 transition-colors z-10"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              <div className="flex items-start gap-4 mb-5">
-                <div className={`p-3 rounded-xl ${
-                  selectedCert.type === 'hackathon' ? 'bg-secondary/10 border border-secondary/20' : 'bg-primary/10 border border-primary/20'
-                }`}>
-                  {selectedCert.type === 'hackathon' ? (
-                    <Trophy className={`w-6 h-6 text-secondary`} />
-                  ) : (
-                    <Award className={`w-6 h-6 text-primary`} />
-                  )}
-                </div>
-                <div>
-                  <span className={`text-xs font-medium px-2 py-1 rounded-full ${
-                    selectedCert.type === 'hackathon' ? 'bg-secondary/10 text-secondary' : 'bg-primary/10 text-primary'
-                  }`}>
-                    {selectedCert.type === 'hackathon' ? 'Hackathon' : 'Certification'}
-                  </span>
-                  <h3 className="text-xl font-bold mt-2 text-foreground">{selectedCert.name}</h3>
-                  <p className="text-muted-foreground">{selectedCert.issuer}</p>
-                </div>
-              </div>
-
-              {/* Certificate Image */}
-              <div className="aspect-video bg-muted/30 rounded-xl mb-5 flex items-center justify-center border border-border/50 overflow-hidden">
+              <div className="md:w-1/2 bg-muted flex items-center justify-center overflow-hidden">
                 <img src={selectedCert.image} alt={selectedCert.name} className="w-full h-full object-contain" />
               </div>
-
-              {selectedCert.description && (
-                <p className="text-muted-foreground text-sm mb-5">{selectedCert.description}</p>
-              )}
+              <div className="md:w-1/2 p-6 md:p-8 overflow-y-auto">
+                <div className="flex justify-between items-start mb-6">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest ${
+                        selectedCert.type === 'hackathon' ? 'bg-secondary/10 text-secondary' : 'bg-primary/10 text-primary'
+                      }`}>
+                        {selectedCert.type}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl font-bold">{selectedCert.name}</h3>
+                    <p className="text-lg text-primary font-medium">{selectedCert.issuer}</p>
+                  </div>
+                  <button
+                    onClick={() => setSelectedCert(null)}
+                    className="p-2 rounded-xl bg-muted hover:bg-muted/80 transition-colors"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+                <p className="text-muted-foreground mb-8 leading-relaxed">
+                  {selectedCert.description}
+                </p>
+                <div className="flex flex-col gap-3">
+                  {selectedCert.type === 'skill' && (
+                    <button
+                      onClick={() => {
+                        setSelectedCert(null);
+                        navigate(`/certification/${selectedCert.id}`);
+                      }}
+                      className="w-full btn-primary flex items-center justify-center gap-2"
+                    >
+                      <Info className="w-4 h-4" />
+                      View Learning Journey
+                    </button>
+                  )}
+                  <button
+                    onClick={() => setSelectedCert(null)}
+                    className="w-full btn-outline"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         )}
