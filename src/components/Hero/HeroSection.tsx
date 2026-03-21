@@ -120,6 +120,39 @@ const HeroSection = () => {
         className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-[100px] pointer-events-none" 
       />
 
+      {/* Floating Code Bits */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+        {[
+          { text: "<div>", top: "10%", left: "5%", delay: 0 },
+          { text: "const", top: "20%", left: "80%", delay: 2 },
+          { text: "import", top: "70%", left: "15%", delay: 1 },
+          { text: "() =>", top: "80%", left: "75%", delay: 3 },
+          { text: "return", top: "15%", left: "40%", delay: 4 },
+          { text: "await", top: "60%", left: "85%", delay: 2.5 },
+          { text: "interface", top: "40%", left: "90%", delay: 1.5 },
+        ].map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ 
+              opacity: [0.3, 0.6, 0.3],
+              y: [0, -20, 0],
+              x: [0, 10, 0]
+            }}
+            transition={{ 
+              duration: 5 + Math.random() * 5, 
+              repeat: Infinity, 
+              delay: item.delay,
+              ease: "easeInOut" 
+            }}
+            className="absolute font-mono text-sm text-primary/40 whitespace-nowrap"
+            style={{ top: item.top, left: item.left }}
+          >
+            {item.text}
+          </motion.div>
+        ))}
+      </div>
+
       <div className="section-container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Photo */}

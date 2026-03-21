@@ -1,6 +1,7 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Code2, Server, Database, Wrench, Sparkles, ChevronDown } from 'lucide-react';
+import TechStackMarquee from '../Hero/TechStackMarquee';
 
 interface SkillDetail {
   name: string;
@@ -120,9 +121,10 @@ const SkillsSection = () => {
             <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
               Technical Expertise
             </span>
-            <h2 className="section-heading">
+            <h2 className="section-heading mb-8">
               My <span className="gradient-text">Skills</span>
             </h2>
+            <TechStackMarquee />
           </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-6 items-start">
