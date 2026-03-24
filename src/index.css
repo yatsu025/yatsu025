@@ -70,6 +70,12 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    cursor: none !important;
+  }
+
+  /* Hide cursor globally for all interactive elements */
+  a, button, [role="button"], input, select, textarea {
+    cursor: none !important;
   }
 
   h1, h2, h3, h4, h5, h6 {

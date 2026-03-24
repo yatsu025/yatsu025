@@ -124,7 +124,6 @@ const SkillsSection = () => {
             <h2 className="section-heading mb-8">
               My <span className="gradient-text">Skills</span>
             </h2>
-            <TechStackMarquee />
           </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-6 items-start">
@@ -278,6 +277,11 @@ const SkillsSection = () => {
               </motion.div>
             </div>
           </div>
+
+          {/* Marquee at the bottom of the section */}
+          <motion.div variants={itemVariants} className="mt-16">
+            <TechStackMarquee />
+          </motion.div>
         </motion.div>
       </div>
     </section>

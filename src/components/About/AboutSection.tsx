@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { MapPin, GraduationCap, Target, Sparkles } from 'lucide-react';
+import TiltCard from '../ui/TiltCard';
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -101,16 +102,19 @@ const AboutSection = () => {
                 key={card.label}
                 variants={itemVariants}
                 custom={index}
-                className="glass-card-hover p-6 text-center group"
               >
-                <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${card.gradient} mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <card.icon className="w-6 h-6 text-background" />
-                </div>
-                <p className="text-sm text-muted-foreground mb-1">{card.label}</p>
-                <p className="font-semibold text-foreground">{card.value}</p>
-                {card.subValue && (
-                  <p className="text-sm text-muted-foreground mt-1">{card.subValue}</p>
-                )}
+                <TiltCard className="h-full">
+                  <div className="glass-card-hover p-6 text-center group h-full">
+                    <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${card.gradient} mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                      <card.icon className="w-6 h-6 text-background" />
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-1">{card.label}</p>
+                    <p className="font-semibold text-foreground">{card.value}</p>
+                    {card.subValue && (
+                      <p className="text-sm text-muted-foreground mt-1">{card.subValue}</p>
+                    )}
+                  </div>
+                </TiltCard>
               </motion.div>
             ))}
           </div>

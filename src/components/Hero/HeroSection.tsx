@@ -95,7 +95,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center relative overflow-hidden">
+    <section id="hero" className="min-h-[90vh] flex items-center relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 bg-radial-glow" />
       <div className="absolute inset-0 bg-grid-pattern opacity-30" />
