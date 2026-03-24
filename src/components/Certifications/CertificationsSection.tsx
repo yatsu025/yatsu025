@@ -7,7 +7,7 @@ import { hackathons, skillCertifications as certifications, Certification } from
 const CertificationsSection = () => {
   const ref = useRef(null);
   const navigate = useNavigate();
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
 
   const containerVariants = {

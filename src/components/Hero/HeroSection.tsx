@@ -70,8 +70,8 @@ const HeroSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
       },
     },
   };
@@ -177,9 +177,9 @@ const HeroSection = () => {
                   opacity: [0, 1, 1]
                 }}
                 transition={{ 
-                  duration: 4,
+                  duration: 2.5, // Faster intro
                   ease: [0.25, 0.46, 0.45, 0.94],
-                  delay: 0.5,
+                  delay: 0.2,
                   times: [0, 0.7, 1]
                 }}
                 style={{ 
@@ -211,7 +211,7 @@ const HeroSection = () => {
                     className="absolute inset-0 rounded-3xl"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1, duration: 0.8 }}
+                    transition={{ delay: 0.5, duration: 0.5 }} // Faster
                     style={{ 
                       backfaceVisibility: "hidden",
                       transform: "rotateY(0deg) translateZ(20px)"
@@ -245,7 +245,7 @@ const HeroSection = () => {
                     className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 via-card to-secondary/20 border border-primary/30 flex items-center justify-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1.5, duration: 0.8 }}
+                    transition={{ delay: 0.8, duration: 0.5 }} // Faster
                     style={{ 
                       backfaceVisibility: "hidden",
                       transform: "rotateY(180deg) translateZ(20px)"

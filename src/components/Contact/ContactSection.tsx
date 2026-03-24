@@ -4,7 +4,7 @@ import { Github, Linkedin, Mail, MessageCircle, Send, User, Phone } from 'lucide
 
 const ContactSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   const [formData, setFormData] = useState({
     name: '',

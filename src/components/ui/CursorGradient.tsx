@@ -24,7 +24,7 @@ const CursorGradient = () => {
   );
 
   // Smooth spring physics for the cursor movement
-  const springConfig = { damping: 30, stiffness: 250 }; // Faster and snappier
+  const springConfig = { damping: 35, stiffness: 300, mass: 0.5 }; // More responsive, less heavy
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
 
@@ -32,17 +32,25 @@ const CursorGradient = () => {
   const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
+    let frameId: number;
+    
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+      // Use requestAnimationFrame for smoother performance
+      frameId = requestAnimationFrame(() => {
+        mouseX.set(e.clientX);
+        mouseY.set(e.clientY);
 
-      const target = e.target as HTMLElement;
-      const isInteractive = !!target.closest('a, button, [role="button"], input, select, textarea');
-      setIsHovering(isInteractive);
+        const target = e.target as HTMLElement;
+        const isInteractive = !!target.closest('a, button, [role="button"], input, select, textarea');
+        setIsHovering(isInteractive);
+      });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(frameId);
+    };
   }, [mouseX, mouseY]);
 
   return (
@@ -51,10 +59,11 @@ const CursorGradient = () => {
       <motion.div
         className="fixed top-0 left-0 bg-white rounded-full z-[10000] mix-blend-difference"
         animate={{
-          width: isHovering ? 40 : 10,
-          height: isHovering ? 40 : 10,
-          opacity: isHovering ? 0.3 : 1,
+          width: isHovering ? 35 : 8,
+          height: isHovering ? 35 : 8,
+          opacity: isHovering ? 0.4 : 1,
         }}
+        transition={{ type: "spring", stiffness: 500, damping: 30 }}
         style={{
           x: cursorX,
           y: cursorY,
@@ -65,25 +74,13 @@ const CursorGradient = () => {
 
       {/* Primary Soft White Glow - Tighter Spread */}
       <motion.div
-        className="absolute w-[150px] h-[150px] rounded-full blur-[40px] opacity-[0.12] bg-white/20"
+        className="absolute w-[180px] h-[180px] rounded-full blur-[50px] opacity-[0.08] bg-white/20"
         style={{
           x: cursorX,
           y: cursorY,
           translateX: '-50%',
           translateY: '-50%',
-          scale: isHovering ? 2 : scale,
-        }}
-      />
-      
-      {/* Outer Subtle Aura - Reduced Size */}
-      <motion.div
-        className="absolute w-[300px] h-[300px] rounded-full blur-[70px] opacity-[0.06] bg-white/10"
-        style={{
-          x: cursorX,
-          y: cursorY,
-          translateX: '-50%',
-          translateY: '-50%',
-          scale: isHovering ? 2.5 : useTransform(scale, [1, 1.5], [1, 1.1]),
+          scale: isHovering ? 1.8 : scale,
         }}
       />
     </div>

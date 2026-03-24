@@ -4,7 +4,7 @@ import { FileText, Image, Download } from 'lucide-react';
 
 const ResumeSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   const containerVariants = {
     hidden: { opacity: 0 },

@@ -100,10 +100,10 @@ const TechStackMarquee = () => {
   return (
     <div className="relative py-12 overflow-hidden">
       <div className="relative z-10 flex flex-col gap-4">
-        <MarqueeRow items={row1} direction="left" speed={45} />
-        <MarqueeRow items={row2} direction="right" speed={50} />
-        <MarqueeRow items={row3} direction="left" speed={48} />
-        <MarqueeRow items={row4} direction="right" speed={42} />
+        <MarqueeRow items={row1} direction="left" speed={35} />
+        <MarqueeRow items={row2} direction="right" speed={40} />
+        <MarqueeRow items={row3} direction="left" speed={38} />
+        <MarqueeRow items={row4} direction="right" speed={32} />
       </div>
       
       {/* Gradient masks for smooth fade edges */}
