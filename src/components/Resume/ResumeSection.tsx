@@ -73,7 +73,7 @@ const ResumeSection = () => {
 
               {/* View Image */}
               <a
-                href="#"
+                href="/resume/yash_resume.png"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-card-hover p-6 flex flex-col items-center gap-4 group"
