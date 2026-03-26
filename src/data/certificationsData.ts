@@ -100,29 +100,29 @@ export const hackathons: Certification[] = [
     type: 'hackathon', 
     image: "/certificate/Vibe.jpg", 
     description: "Participated in a creative tech competition.",
-    date: "2023"
+    date: "2025"
   },
 ];
 
 export const skillCertifications: Certification[] = [
   {
-    id: "mern-stack",
-    name: "MERN Stack Development",
+    id: "Introduction to Claude Cowork",
+    name: "Introduction to Claude Cowork",
     issuer: "Skill Certification",
     type: 'skill',
     image: "/certificate/certificate-9arazvxunxzx-1774098995.jpg",
-    description: "Certified in MERN Stack development, covering MongoDB, Express.js, React, and Node.js.",
-    date: "2024",
+    description: "Certified in Introduction to Claude Cowork, covering MongoDB, Express.js, React, and Node.js.",
+    date: "2026",
     skillsGained: ["React", "Node.js", "Express", "MongoDB"]
   },
   {
-    id: "web-development-bootcamp",
-    name: "Web Development Bootcamp",
+    id: "Claude code in Action",
+    name: "Claude code in Action",
     issuer: "Skill Certification",
     type: 'skill',
     image: "/certificate/certificate-my593etp9jjw-1774098842.jpg",
-    description: "Completed a comprehensive web development bootcamp focusing on modern frontend and backend technologies.",
-    date: "2024",
+    description: "Completed a comprehensive Claude code in Actionfocusing on modern frontend and backend technologies.",
+    date: "2026",
     skillsGained: ["HTML", "CSS", "JavaScript", "React"]
   },
   { 
