@@ -105,6 +105,26 @@ export const hackathons: Certification[] = [
 ];
 
 export const skillCertifications: Certification[] = [
+  {
+    id: "mern-stack",
+    name: "MERN Stack Development",
+    issuer: "Skill Certification",
+    type: 'skill',
+    image: "/certificate/certificate-9arazvxunxzx-1774098995.jpg",
+    description: "Certified in MERN Stack development, covering MongoDB, Express.js, React, and Node.js.",
+    date: "2024",
+    skillsGained: ["React", "Node.js", "Express", "MongoDB"]
+  },
+  {
+    id: "web-development-bootcamp",
+    name: "Web Development Bootcamp",
+    issuer: "Skill Certification",
+    type: 'skill',
+    image: "/certificate/certificate-my593etp9jjw-1774098842.jpg",
+    description: "Completed a comprehensive web development bootcamp focusing on modern frontend and backend technologies.",
+    date: "2024",
+    skillsGained: ["HTML", "CSS", "JavaScript", "React"]
+  },
   { 
     id: "aws-cloud-practitioner", 
     name: "AWS Cloud Practitioner", 
