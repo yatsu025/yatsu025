@@ -19,7 +19,7 @@ export const hackathons: Certification[] = [
     type: 'hackathon', 
     image: "/certificate/Ace hack 4.0.jpg.jpeg", 
     description: "Participated in Ace Hack 4.0, working on innovative solutions.",
-    date: "2024"
+    date: "2025"
   },
   { 
     id: "code-verse", 
@@ -27,7 +27,7 @@ export const hackathons: Certification[] = [
     issuer: "Code Verse", 
     type: 'hackathon', 
     image: "/certificate/Code verse.jpg.jpeg", 
-    description: "Collaborated with a team to build a unique web application.",
+    description: "Collaborated with a team to build a unique web application. and this is my Frist Hackathon and i taught something very big thing",
     date: "2024"
   },
   { 
@@ -36,8 +36,8 @@ export const hackathons: Certification[] = [
     issuer: "United Institute of Management", 
     type: 'hackathon', 
     image: "/certificate/Coding challenge of United.png", 
-    description: "Competed in a rigorous coding challenge focused on algorithms.",
-    date: "2024"
+    description: "Competed in a rigorous coding challenge focused on algorithms. and cosistently 50 days i solve one problem in a day ",
+    date: "2025"
   },
   { 
     id: "hack-with-up", 
@@ -45,8 +45,8 @@ export const hackathons: Certification[] = [
     issuer: "Government of UP", 
     type: 'hackathon', 
     image: "/certificate/Hack with Utterpredesh.png", 
-    description: "Developed a solution for local governance challenges.",
-    date: "2023"
+    description: "collab with membes and taught something better",
+    date: "2026"
   },
   { 
     id: "hackshatra", 
@@ -55,7 +55,7 @@ export const hackathons: Certification[] = [
     type: 'hackathon', 
     image: "/certificate/Hackshatra.jpg.jpeg", 
     description: "Participated in a 24-hour hackathon focusing on AI/ML.",
-    date: "2023"
+    date: "2025"
   },
   { 
     id: "kode-kalesh", 
@@ -63,8 +63,8 @@ export const hackathons: Certification[] = [
     issuer: "Kode Kalesh", 
     type: 'hackathon', 
     image: "/certificate/Kode Kalesh.png", 
-    description: "Participated in an intense coding competition.",
-    date: "2023"
+    description: "Participated in an intense coding competition. and try to solve a distster related problem ",
+    date: "2025"
   },
   { 
     id: "namespace", 
@@ -73,7 +73,7 @@ export const hackathons: Certification[] = [
     type: 'hackathon', 
     image: "/certificate/Namespace.jpg.jpeg", 
     description: "Explored advanced web technologies during this event.",
-    date: "2023"
+    date: "2025"
   },
   { 
     id: "hackerground", 
@@ -82,7 +82,7 @@ export const hackathons: Certification[] = [
     type: 'hackathon', 
     image: "/certificate/hackerground.jpg", 
     description: "Participated in a high-energy tech event.",
-    date: "2023"
+    date: "2025"
   },
   { 
     id: "bnb-chain", 
@@ -91,7 +91,7 @@ export const hackathons: Certification[] = [
     type: 'hackathon', 
     image: "/certificate/BNB chan.jpg.jpeg", 
     description: "Explored blockchain technology and decentralized apps.",
-    date: "2023"
+    date: "2025"
   },
   { 
     id: "vibe", 
