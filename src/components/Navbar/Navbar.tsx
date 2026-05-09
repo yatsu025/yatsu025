@@ -8,6 +8,7 @@ const Navbar = () => {
 
   const navLinks = [
     { label: 'About', href: '#about' },
+    { label: 'Services', href: '#services' },
     { label: 'Skills', href: '#skills' },
     { label: 'Certifications', href: '#certifications' },
     { label: 'Projects', href: '#projects' },
@@ -60,7 +61,7 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <a href="#contact" className="hidden md:block btn-primary text-sm py-2 px-4">
-            Hire Me
+            Get a Quote
           </a>
 
           {/* Mobile Menu Button */}
@@ -98,7 +99,7 @@ const Navbar = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="btn-primary text-center mt-2"
                 >
-                  Hire Me
+                  Get a Quote
                 </a>
               </div>
             </motion.div>

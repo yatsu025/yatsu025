@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Github, Linkedin, Mail, MessageCircle, Send, User, Phone } from 'lucide-react';
+import { Github, Linkedin, Mail, MessageCircle, Send, User, Phone, Briefcase, Clock, IndianRupee } from 'lucide-react';
 
 const ContactSection = () => {
   const ref = useRef(null);
@@ -10,6 +10,9 @@ const ContactSection = () => {
     name: '',
     email: '',
     phone: '',
+    projectType: '',
+    timeline: '',
+    budget: '',
     message: '',
   });
 
@@ -39,7 +42,19 @@ const ContactSection = () => {
     
     // Create WhatsApp message
     const whatsappNumber = '9554924590'; // Replace with actual number
-    const message = `Hello! I'm ${formData.name}.\n\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage: ${formData.message}`;
+    const message = [
+      `Hi Yash, I'm ${formData.name}.`,
+      '',
+      `Project type: ${formData.projectType || '-'}`,
+      `Timeline: ${formData.timeline || '-'}`,
+      `Budget (optional): ${formData.budget || '-'}`,
+      '',
+      `Email: ${formData.email}`,
+      `Phone: ${formData.phone || '-'}`,
+      '',
+      'Project details:',
+      formData.message,
+    ].join('\n');
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
     
@@ -86,7 +101,7 @@ const ContactSection = () => {
               Let's <span className="gradient-text-warm">Connect</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto mt-4 text-base sm:text-lg md:text-xl">
-              Have a project in mind or want to collaborate? I'd love to hear from you!
+              Tell me what you want to build and I’ll reply with a quick plan + estimate.
             </p>
           </motion.div>
 
@@ -96,7 +111,7 @@ const ContactSection = () => {
               <div>
                 <h3 className="text-2xl font-bold mb-6">Connect With Me</h3>
                 <p className="text-muted-foreground mb-8">
-                  Feel free to reach out through any of these platforms. I'm always open to discussing new projects, creative ideas, or opportunities to be part of something amazing.
+                  Fastest way is WhatsApp. Share your project details and I’ll respond within 24 hours.
                 </p>
               </div>
 
@@ -137,7 +152,10 @@ const ContactSection = () => {
             {/* Right - Contact Form */}
             <motion.div variants={itemVariants}>
               <form onSubmit={handleSubmit} className="glass-card p-8">
-                <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+                <h3 className="text-2xl font-bold mb-2">Get a quote</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Fill this once—WhatsApp message will be auto-generated.
+                </p>
                 
                 <div className="space-y-5">
                   {/* Name */}
@@ -199,10 +217,68 @@ const ContactSection = () => {
                     </div>
                   </div>
 
+                  {/* Project Type */}
+                  <div>
+                    <label htmlFor="projectType" className="block text-sm font-medium mb-2">
+                      What do you need?
+                    </label>
+                    <div className="relative">
+                      <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                      <input
+                        type="text"
+                        id="projectType"
+                        name="projectType"
+                        value={formData.projectType}
+                        onChange={handleChange}
+                        required
+                        className="w-full pl-12 pr-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                        placeholder="Landing page / Portfolio / UI fixes / Small business site"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Timeline */}
+                  <div>
+                    <label htmlFor="timeline" className="block text-sm font-medium mb-2">
+                      Timeline
+                    </label>
+                    <div className="relative">
+                      <Clock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                      <input
+                        type="text"
+                        id="timeline"
+                        name="timeline"
+                        value={formData.timeline}
+                        onChange={handleChange}
+                        className="w-full pl-12 pr-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                        placeholder="e.g. 3 days / 1 week / flexible"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Budget */}
+                  <div>
+                    <label htmlFor="budget" className="block text-sm font-medium mb-2">
+                      Budget (optional)
+                    </label>
+                    <div className="relative">
+                      <IndianRupee className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                      <input
+                        type="text"
+                        id="budget"
+                        name="budget"
+                        value={formData.budget}
+                        onChange={handleChange}
+                        className="w-full pl-12 pr-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                        placeholder="e.g. ₹5k–₹15k"
+                      />
+                    </div>
+                  </div>
+
                   {/* Message */}
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium mb-2">
-                      Your Message
+                      Project details
                     </label>
                     <div className="relative">
                       <MessageCircle className="absolute left-4 top-4 w-5 h-5 text-muted-foreground" />
@@ -214,7 +290,7 @@ const ContactSection = () => {
                         required
                         rows={4}
                         className="w-full pl-12 pr-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none"
-                        placeholder="Tell me about your project..."
+                        placeholder="What is your goal? Any reference website? Pages needed? Content ready? (Yes/No)"
                       />
                     </div>
                   </div>
@@ -227,7 +303,7 @@ const ContactSection = () => {
                     whileTap={{ scale: 0.98 }}
                   >
                     <Send className="w-5 h-5" />
-                    Send via WhatsApp
+                    Send on WhatsApp
                   </motion.button>
                 </div>
               </form>

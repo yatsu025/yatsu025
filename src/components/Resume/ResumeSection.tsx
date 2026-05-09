@@ -92,8 +92,8 @@ const ResumeSection = () => {
 
             {/* Download Button */}
             <motion.a
-              href="#"
-              download
+              href="/resume/yash_srivastava_resume.pdf"
+              download="Yash_Srivastava_Resume.pdf"
               className="btn-primary inline-flex items-center gap-3 text-lg"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

@@ -68,13 +68,13 @@ const AboutSection = () => {
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
             <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
-              About Me
+              About
             </span>
             <h2 className="section-heading">
-              Get to Know <span className="gradient-text">Who I Am</span>
+              Developer who ships <span className="gradient-text">client-ready</span> work
             </h2>
             <p className="section-subheading mx-auto mt-4">
-              A passionate developer on a mission to create meaningful digital experiences
+              Clear communication, clean UI, and reliable delivery.
             </p>
           </motion.div>
 
@@ -84,14 +84,10 @@ const AboutSection = () => {
             className="glass-card p-8 md:p-12 mb-12 max-w-4xl mx-auto"
           >
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-center">
-              I'm <span className="text-foreground font-semibold">Yash Srivastava</span>, 
-              a dedicated BCA student with a burning passion for frontend development. 
-              My journey in tech has been fueled by curiosity and a drive to solve real-world problems 
-              through elegant code. With hands-on experience in{' '}
-              <span className="text-primary font-medium">React, JavaScript, Python, and Django</span>, 
-              I've participated in over <span className="text-secondary font-medium">10 hackathons</span>, 
-              each one teaching me invaluable lessons about teamwork, innovation, and rapid prototyping. 
-              I believe in continuous learning and am always exploring new technologies to expand my skill set.
+              I'm <span className="text-foreground font-semibold">Yash Srivastava</span>. I help individuals and small businesses
+              build modern web experiences—landing pages, portfolios, and product-style UIs.
+              I work with <span className="text-primary font-medium">React, TypeScript, Tailwind CSS</span>, and I’ve built under pressure in{' '}
+              <span className="text-secondary font-medium">10+ hackathons</span>, which trained me to move fast without breaking quality.
             </p>
           </motion.div>
 

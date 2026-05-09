@@ -4,8 +4,8 @@ import TiltCard from '../ui/TiltCard';
 
 const stats = [
   {
-    label: "Hackathons",
-    value: "10+",
+    label: "Response Time",
+    value: "< 24h",
     icon: Trophy,
     color: "text-yellow-400",
     bgColor: "bg-yellow-400/10",
@@ -18,15 +18,15 @@ const stats = [
     bgColor: "bg-primary/10",
   },
   {
-    label: "Hackathon Hours",
-    value: "200+",
+    label: "Hackathons",
+    value: "10+",
     icon: Laptop,
     color: "text-blue-400",
     bgColor: "bg-blue-400/10",
   },
   {
-    label: "Learning Year",
-    value: "2nd",
+    label: "Based In",
+    value: "India",
     icon: GraduationCap,
     color: "text-purple-400",
     bgColor: "bg-purple-400/10",

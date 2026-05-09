@@ -45,13 +45,13 @@ const ProjectsSection = () => {
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16">
             <span className="inline-block px-3 sm:px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs sm:text-sm font-medium mb-4">
-              My Work
+              Work
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              Featured <span className="gradient-text">Projects</span>
+              Recent <span className="gradient-text">Projects</span>
             </h2>
             <p className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-2xl mx-auto mt-4">
-              A showcase of my hackathon builds and personal projects
+              A few builds that show UI quality, speed, and problem-solving.
             </p>
           </motion.div>
 

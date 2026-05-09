@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, CheckCircle2 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 
 const HeroSection = () => {
@@ -322,7 +322,7 @@ const HeroSection = () => {
                 className="absolute -bottom-4 -right-4 glass-card px-4 py-2 flex items-center gap-2"
               >
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-sm font-medium">Open to Opportunities</span>
+                <span className="text-sm font-medium">Freelance Web Developer</span>
               </motion.div>
             </div>
           </motion.div>
@@ -346,7 +346,7 @@ const HeroSection = () => {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium relative group"
               >
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,212,170,0.8)]" />
-                Available for Projects
+                Freelance Web Developer
                 <motion.span 
                   className="absolute inset-0 rounded-full border border-primary/50 opacity-0 group-hover:opacity-100"
                   animate={{ scale: [1, 1.1, 1] }}
@@ -388,9 +388,9 @@ const HeroSection = () => {
               className="flex flex-wrap justify-center lg:justify-start gap-x-4 gap-y-2 mb-8"
             >
               {[
-                { text: "Frontend Developer", color: "text-primary" },
-                { text: "BCA Student", color: "text-foreground" },
-                { text: "Problem Solver", color: "gradient-text-warm" }
+                { text: "Freelance Web Developer", color: "text-primary" },
+                { text: "Landing Pages", color: "text-foreground" },
+                { text: "React + UI Fixes", color: "gradient-text-warm" }
               ].map((role, index) => (
                 <motion.div
                   key={role.text}
@@ -417,10 +417,25 @@ const HeroSection = () => {
               transition={{ duration: 1, delay: 0.8 }}
               className="text-muted-foreground text-lg sm:text-xl max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed"
             >
-              Passionate about crafting <span className="text-foreground font-medium border-b border-primary/30">intuitive user experiences</span> with modern web technologies. 
-              With <span className="text-primary font-bold">10+ hackathons</span> under my belt, 
-              I transform complex ideas into <span className="text-primary font-bold">impactful digital solutions</span>.
+              I build <span className="text-foreground font-medium border-b border-primary/30">fast, modern websites</span> that clearly explain your offer and help you get leads.
+              If you need a clean landing page, a portfolio, or UI fixes on a React site, I can ship quickly with regular updates.
             </motion.p>
+
+            <motion.div variants={itemVariants} className="mb-10">
+              <div className="grid sm:grid-cols-2 gap-3 max-w-xl mx-auto lg:mx-0">
+                {[
+                  'Mobile-first + responsive',
+                  'Clean UI + smooth animations',
+                  'Performance-focused',
+                  'WhatsApp/Email contact flow',
+                ].map((t) => (
+                  <div key={t} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <CheckCircle2 className="w-4 h-4 text-primary" />
+                    <span>{t}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
 
             <motion.div
               variants={itemVariants}
@@ -445,7 +460,7 @@ const HeroSection = () => {
                 whileTap={{ scale: 0.95 }}
                 className="btn-outline border-primary/50"
               >
-                Let's Talk
+                Get a Quote
               </motion.a>
             </motion.div>
 

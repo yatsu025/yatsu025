@@ -14,6 +14,8 @@ const Footer = () => {
           <div className="flex items-center gap-2 text-muted-foreground">
             <span>© {new Date().getFullYear()}</span>
             <span className="gradient-text font-semibold">Yash Srivastava</span>
+            <span className="text-muted-foreground/50 hidden sm:inline">•</span>
+            <span className="hidden sm:inline text-muted-foreground">Freelance Web Developer</span>
           </div>
 
           <div className="flex items-center gap-2 text-muted-foreground text-sm">
