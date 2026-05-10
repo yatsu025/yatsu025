@@ -9,6 +9,7 @@ import ProjectDetail from "./pages/ProjectDetail";
 import CertificationsPage from "./pages/CertificationsPage";
 import CertificationDetail from "./pages/CertificationDetail";
 import NotFound from "./pages/NotFound";
+import SeoHead from "./components/Seo/SeoHead";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
       <Sonner />
       <CursorGradient />
       <BrowserRouter>
+        <SeoHead />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/project/:id" element={<ProjectDetail />} />

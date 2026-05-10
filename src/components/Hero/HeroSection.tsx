@@ -418,6 +418,7 @@ const HeroSection = () => {
               className="text-muted-foreground text-lg sm:text-xl max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed"
             >
               I build <span className="text-foreground font-medium border-b border-primary/30">fast, modern websites</span> that clearly explain your offer and help you get leads.
+              Based in <span className="text-foreground font-medium">Prayagraj (Allahabad), Uttar Pradesh, India</span> — I work with local businesses and remote clients.
               If you need a clean landing page, a portfolio, or UI fixes on a React site, I can ship quickly with regular updates.
             </motion.p>
 
