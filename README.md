@@ -1,5 +1,5 @@
  # 💫 About Me:
-🛠️ I’m currently working on improving my technical and communication skills consistently.<br>🤝 I’m looking to collaborate on exciting projects and hackathons.<br>🆘 I’m looking for help with mastering backend development.<br>🌱 I’m currently learning HTML, CSS, Java, and improving my backend skills.<br>💬 Ask me about Python, C, and my experience in tech events.<br>⚡ Fun fact: I’m passionate about technology and always eager to participate in new events and challenges!
+🛠️ I’m currently working on improving my technical and communication skills consistently.<br>🤝 I’m looking to collaborate on exciting projects and hackathons.<br>🆘 I’m looking for help with mastering backend development.<br>🌱 I’m currently learning HTML, CSS, Java,react, tailwind, bootstrap, and improving my backend skills.<br>💬 Ask me about Python, C, and my experience in tech events.<br>⚡ Fun fact: I’m passionate about technology and always eager to participate in new events and challenges!
 
 
 ## 🌐 Socials:
