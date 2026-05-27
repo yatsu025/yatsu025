@@ -183,7 +183,7 @@ const ProjectsSection = () => {
                           {/* CTA row */}
                           <div className="flex items-center justify-between gap-3">
                             <Link
-                              to={`/project/${project.id}`}
+                              to={`/major-project/${project.id}`}
                               className="flex items-center gap-2 text-sm font-bold text-primary hover:text-white transition-colors group/link"
                             >
                               View Case Study
@@ -323,7 +323,7 @@ const ProjectsSection = () => {
                               
                               <div className="flex items-center gap-4 pt-2">
                                 <Link 
-                                  to={`/project/${project.id}`}
+                                  to={`/mini-project/${project.id}`}
                                   className="flex items-center gap-2 text-xs font-bold text-primary hover:text-white transition-colors group/link"
                                 >
                                   View Details <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />

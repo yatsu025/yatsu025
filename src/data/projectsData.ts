@@ -66,6 +66,7 @@ export const majorProjects: Project[] = [
     description: "A gamified GitHub consistency platform that motivates developers to code consistently using streaks, XP, shields, tiers, and global rankings.",
     techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "GitHub API", "Vercel"],
     type: 'major',
+    imageUrl: "/project-screeenshot/strike.png",
     liveUrl: "https://streak-verse.vercel.app/",
     githubUrl: "https://github.com/yatsu025/StreakVerse",
     year: "2026",
