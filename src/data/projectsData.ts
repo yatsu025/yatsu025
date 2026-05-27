@@ -11,6 +11,9 @@ export interface Project {
   solution?: string;
   myWork?: string;
   impact?: string;
+  features?: string[];
+  year?: string;
+  status?: string;
   isComingSoon?: boolean;
 }
 
@@ -58,12 +61,30 @@ export const miniProjects: Project[] = [
 
 export const majorProjects: Project[] = [
   {
-    id: "coming-soon-1",
-    title: "Major Project 1",
-    description: "Exciting new project in development",
-    techStack: ["React", "Next.js", "AI", "TypeScript"],
+    id: "streakverse",
+    title: "StreakVerse",
+    description: "A gamified GitHub consistency platform that motivates developers to code consistently using streaks, XP, shields, tiers, and global rankings.",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "GitHub API", "Vercel"],
     type: 'major',
-    isComingSoon: true,
+    liveUrl: "https://streak-verse.vercel.app/",
+    githubUrl: "https://github.com/yatsu025/StreakVerse",
+    year: "2026",
+    status: "Active Development",
+    problem: "Many developers struggle to stay consistent with coding. GitHub contribution graphs are not motivating enough and lack accountability, competition, and reward systems.",
+    solution: "Built a gamified GitHub consistency platform that transforms coding activity into streaks, XP, shields, rankings, and competitive progression to motivate developers to code consistently.",
+    myWork: "Designed and developed the complete full-stack system including GitHub OAuth authentication, streak tracking, XP algorithm, leaderboard ranking system, Supabase integration, webhook sync, and futuristic gaming-style UI.",
+    features: [
+      "GitHub OAuth Login",
+      "Commit Streak Tracking",
+      "XP & Tier System",
+      "Global Leaderboard",
+      "Rank Score Algorithm",
+      "Streak Shields",
+      "Dashboard Analytics",
+      "Public Profile Viewing",
+      "GitHub Sync (Webhook + Polling)",
+    ],
+    isComingSoon: false,
   },
   {
     id: "coming-soon-2",

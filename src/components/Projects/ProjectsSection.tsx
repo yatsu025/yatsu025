@@ -1,7 +1,7 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ExternalLink, Github, Info, ChevronDown, ChevronUp, Layers, Sparkles, ArrowRight } from 'lucide-react';
+import { ExternalLink, Github, Info, ChevronDown, ChevronUp, Layers, Sparkles, ArrowRight, Zap, Trophy, Shield, GitBranch } from 'lucide-react';
 import { miniProjects, majorProjects, Project } from '@/data/projectsData';
 import TiltCard from '../ui/TiltCard';
 
@@ -69,54 +69,31 @@ const ProjectsSection = () => {
                 <motion.div
                   key={project.id}
                   variants={itemVariants}
-                  className={`glass-card-hover overflow-hidden group ${project.isComingSoon ? 'relative h-[300px]' : ''}`}
+                  className={`overflow-hidden group ${project.isComingSoon ? 'glass-card-hover relative h-[300px]' : ''}`}
                 >
                   {project.isComingSoon ? (
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 z-10 flex items-center justify-center">
                       <div className="text-center">
                         <motion.div
-                          animate={{ 
-                            scale: [1, 1.1, 1],
-                            opacity: [0.7, 1, 0.7]
-                          }}
-                          transition={{ 
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
+                          animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                           className="text-3xl md:text-4xl font-bold gradient-text mb-4"
                         >
                           Coming Soon
                         </motion.div>
-                        
                         <div className="flex justify-center gap-1 mb-4">
                           {[0, 1, 2].map((i) => (
                             <motion.div
                               key={i}
                               className="w-2 h-2 bg-primary rounded-full"
-                              animate={{
-                                scale: [1, 1.5, 1],
-                                opacity: [0.5, 1, 0.5]
-                              }}
-                              transition={{
-                                duration: 1.5,
-                                repeat: Infinity,
-                                delay: i * 0.2,
-                                ease: "easeInOut"
-                              }}
+                              animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+                              transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2, ease: "easeInOut" }}
                             />
                           ))}
                         </div>
-                        
                         <motion.div
-                          animate={{ 
-                            y: [0, -5, 0]
-                          }}
-                          transition={{ 
-                            duration: 1.5,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
+                          animate={{ y: [0, -5, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                           className="text-sm text-muted-foreground font-medium"
                         >
                           Something amazing is brewing...
@@ -124,9 +101,122 @@ const ProjectsSection = () => {
                       </div>
                     </div>
                   ) : (
-                    <>
-                      {/* Similar layout for major projects if they exist, but for now they are coming soon */}
-                    </>
+                    /* ── Premium Major Project Card ── */
+                    <TiltCard className="h-full">
+                      <div className="relative glass-card-hover rounded-2xl overflow-hidden shadow-2xl border border-primary/20 group">
+                        {/* Animated top gradient bar */}
+                        <div className="h-1 w-full bg-gradient-to-r from-primary via-cyan-400 to-secondary" />
+
+                        {/* Glow orbs */}
+                        <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none group-hover:bg-primary/20 transition-all duration-700" />
+                        <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-secondary/10 rounded-full blur-3xl pointer-events-none group-hover:bg-secondary/15 transition-all duration-700" />
+
+                        <div className="relative z-10 p-6 sm:p-8">
+                          {/* Header row */}
+                          <div className="flex items-start justify-between gap-4 mb-5">
+                            <div className="flex items-center gap-3">
+                              <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-cyan-400/10 border border-primary/30 shadow-lg shadow-primary/10">
+                                <GitBranch className="w-5 h-5 text-primary" />
+                              </div>
+                              <div>
+                                <div className="flex items-center gap-2 mb-0.5">
+                                  <span className="text-[10px] font-bold uppercase tracking-widest text-primary/70">Major Project</span>
+                                  <span className="text-[10px] text-muted-foreground">· {project.year}</span>
+                                </div>
+                                <h4 className="text-xl sm:text-2xl font-bold gradient-text leading-tight">{project.title}</h4>
+                              </div>
+                            </div>
+                            {/* Status badge */}
+                            <span className="shrink-0 flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-[10px] font-bold uppercase tracking-wider">
+                              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                              {project.status}
+                            </span>
+                          </div>
+
+                          {/* Description */}
+                          <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                            {project.description}
+                          </p>
+
+                          {/* Feature pills */}
+                          {project.features && (
+                            <div className="mb-6">
+                              <div className="flex items-center gap-2 mb-3">
+                                <Zap className="w-3.5 h-3.5 text-secondary" />
+                                <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Key Features</span>
+                              </div>
+                              <div className="flex flex-wrap gap-2">
+                                {project.features.slice(0, 6).map((feat) => (
+                                  <span
+                                    key={feat}
+                                    className="px-2.5 py-1 rounded-lg bg-card/80 border border-border text-[11px] font-medium text-foreground/80 hover:border-primary/40 hover:text-primary transition-colors duration-200"
+                                  >
+                                    {feat}
+                                  </span>
+                                ))}
+                                {project.features.length > 6 && (
+                                  <span className="px-2.5 py-1 rounded-lg bg-primary/10 border border-primary/20 text-[11px] font-medium text-primary">
+                                    +{project.features.length - 6} more
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Tech stack */}
+                          <div className="mb-6">
+                            <div className="flex flex-wrap gap-2">
+                              {project.techStack.map((tech) => (
+                                <span
+                                  key={tech}
+                                  className="px-2 py-0.5 rounded-md bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-wider"
+                                >
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Divider */}
+                          <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent mb-5" />
+
+                          {/* CTA row */}
+                          <div className="flex items-center justify-between gap-3">
+                            <Link
+                              to={`/project/${project.id}`}
+                              className="flex items-center gap-2 text-sm font-bold text-primary hover:text-white transition-colors group/link"
+                            >
+                              View Case Study
+                              <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                            </Link>
+                            <div className="flex items-center gap-2">
+                              {project.githubUrl && (
+                                <a
+                                  href={project.githubUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="p-2.5 rounded-xl bg-card/80 border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all duration-300"
+                                  aria-label="GitHub repository"
+                                >
+                                  <Github className="w-4 h-4" />
+                                </a>
+                              )}
+                              {project.liveUrl && (
+                                <a
+                                  href={project.liveUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground text-xs font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300"
+                                >
+                                  <ExternalLink className="w-3.5 h-3.5" />
+                                  Live Demo
+                                </a>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </TiltCard>
                   )}
                 </motion.div>
               ))}
